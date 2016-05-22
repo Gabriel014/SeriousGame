@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Generate : MonoBehaviour {
 
@@ -25,41 +26,52 @@ public class Generate : MonoBehaviour {
 
 	int next;
 	int sprite;
+	public int current;
+	List<int> listaLixos = new List<int>();
+	List<GameObject> trashList;
+	public int score;
+
 
 	// Randomize values to the variables that will randomize the thrash and its sprite
 	void Start () {
+
+		score = 0;
 		next = Random.Range(1, 5);
+		trashList = new List<GameObject>();
+		listaLixos.Add (next);  //adds randomized value to list
+		current = next;			//holds the first value on the list, to be used as comparison when the player clicks a button
 		sprite = Random.Range (1, 4);
 		InvokeRepeating("ThrashRandomizer", 1f, 0.5f);
 	}
 	
 	// This method randomizes the next thrash to be showed in the screen
-	void ThrashRandomizer () {
+	public void ThrashRandomizer () {
 		SpriteRandomizer ();
 
 		switch (next){
 			case 1: 
-				Instantiate(paper);
+				trashList.Add ((GameObject)Instantiate (paper));
 				break;
 			case 2:	
-				Instantiate (plastic);
+				trashList.Add ((GameObject)Instantiate (plastic));
 				break;
 			case 3:	
-				Instantiate(metal);
+				trashList.Add ((GameObject)Instantiate (metal));
 				break;
 			case 4:	
-				Instantiate(glass);
+				trashList.Add ((GameObject)Instantiate (glass));
 				break;
 		}
 
 		next = Random.Range(1, 5);
+		listaLixos.Add (next);
 		sprite = Random.Range (1, 4);
 
 	}
 
 
 	// This method randomizes the sprite of the next thrash to be showed in the screen
-	void SpriteRandomizer (){
+	public void SpriteRandomizer (){
 		switch (next){
 		case 1:
 			if (sprite == 1) paper.GetComponent<SpriteRenderer>().sprite = paper1;
@@ -84,6 +96,47 @@ public class Generate : MonoBehaviour {
 			if (sprite == 2) glass.GetComponent<SpriteRenderer>().sprite = glass2;
 			if (sprite == 3) glass.GetComponent<SpriteRenderer>().sprite = glass3;
 			break;
+		}
+	}
+
+	public void ClickPaper(){
+		if (current == 1) {
+			listaLixos.RemoveAt (0);
+			current = listaLixos [0];
+			Destroy(trashList[0]);
+			trashList.RemoveAt (0);
+			score += 1;
+			Debug.Log (score);
+		}
+	}
+	public void ClickPlastic(){
+		if (current == 2) {
+			listaLixos.RemoveAt (0);
+			current = listaLixos [0];
+			Destroy(trashList[0]);
+			trashList.RemoveAt (0);
+			score += 1;
+			Debug.Log (score);
+		}
+	}
+	public void ClickMetal(){
+		if (current == 3) {
+			listaLixos.RemoveAt (0);
+			current = listaLixos [0];
+			Destroy(trashList[0]);
+			trashList.RemoveAt (0);
+			score += 1;
+			Debug.Log (score);
+		}
+	}
+	public void ClickGlass(){
+		if (current == 4) {
+			listaLixos.RemoveAt (0);
+			current = listaLixos [0];
+			Destroy(trashList[0]);
+			trashList.RemoveAt (0);
+			score += 1;
+			Debug.Log (score);
 		}
 	}
 }

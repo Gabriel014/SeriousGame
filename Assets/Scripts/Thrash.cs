@@ -22,6 +22,6 @@ public class Thrash : MonoBehaviour
 	}
 
 	void GameOver(){
-		Application.LoadLevel(Application.loadedLevel);
+		//Application.LoadLevel(Application.loadedLevel);
 	}
 }
