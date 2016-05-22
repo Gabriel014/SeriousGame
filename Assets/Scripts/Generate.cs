@@ -107,6 +107,8 @@ public class Generate : MonoBehaviour {
 			trashList.RemoveAt (0);
 			score += 1;
 			Debug.Log (score);
+		} else {
+			GameOver ();
 		}
 	}
 	public void ClickPlastic(){
@@ -117,16 +119,20 @@ public class Generate : MonoBehaviour {
 			trashList.RemoveAt (0);
 			score += 1;
 			Debug.Log (score);
+		} else {
+			GameOver ();
 		}
 	}
 	public void ClickMetal(){
 		if (current == 3) {
 			listaLixos.RemoveAt (0);
 			current = listaLixos [0];
-			Destroy(trashList[0]);
+			Destroy (trashList [0]);
 			trashList.RemoveAt (0);
 			score += 1;
 			Debug.Log (score);
+		} else {
+			GameOver ();
 		}
 	}
 	public void ClickGlass(){
@@ -137,6 +143,12 @@ public class Generate : MonoBehaviour {
 			trashList.RemoveAt (0);
 			score += 1;
 			Debug.Log (score);
+		} else {
+			GameOver ();
 		}
+	}
+
+	public void GameOver(){
+		Application.LoadLevel(Application.loadedLevel);
 	}
 }
