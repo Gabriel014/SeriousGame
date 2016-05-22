@@ -45,8 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ButtonsController.cs" />
+     <Compile Include="Assets\Scripts\ClickSound.cs" />
      <Compile Include="Assets\Scripts\Generate.cs" />
+     <Compile Include="Assets\Scripts\ScenesController.cs" />
      <Compile Include="Assets\Scripts\Splash.cs" />
      <Compile Include="Assets\Scripts\Thrash.cs" />
  <Reference Include="UnityEngine.UI">
