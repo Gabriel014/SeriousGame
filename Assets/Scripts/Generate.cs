@@ -24,17 +24,22 @@ public class Generate : MonoBehaviour {
 		public Sprite glass2;
 		public Sprite glass3;
 
+	public GameObject GameOverUI;
+
+
 	int next;
 	int sprite;
 	public int current;
 	List<int> listaLixos = new List<int>();
 	List<GameObject> trashList;
-	public int score;
+	public static int score;
 
 
 	// Randomize values to the variables that will randomize the thrash and its sprite
 	void Start () {
 
+		Trash.dead = false;
+		GameOverUI.SetActive(false);
 		score = 0;
 		next = Random.Range(1, 5);
 		trashList = new List<GameObject>();
@@ -105,10 +110,12 @@ public class Generate : MonoBehaviour {
 			current = listaLixos [0];
 			Destroy(trashList[0]);
 			trashList.RemoveAt (0);
-			score += 1;
+			if (!Trash.dead){
+				score += 10;
+			}
 			Debug.Log (score);
 		} else {
-			GameOver ();
+			Trash.GameOver ();
 		}
 	}
 	public void ClickPlastic(){
@@ -117,10 +124,12 @@ public class Generate : MonoBehaviour {
 			current = listaLixos [0];
 			Destroy(trashList[0]);
 			trashList.RemoveAt (0);
-			score += 1;
+			if (!Trash.dead){
+				score += 10;
+			}
 			Debug.Log (score);
 		} else {
-			GameOver ();
+			Trash.GameOver ();
 		}
 	}
 	public void ClickMetal(){
@@ -129,10 +138,12 @@ public class Generate : MonoBehaviour {
 			current = listaLixos [0];
 			Destroy (trashList [0]);
 			trashList.RemoveAt (0);
-			score += 1;
+			if (!Trash.dead){
+				score += 10;
+			}
 			Debug.Log (score);
 		} else {
-			GameOver ();
+			Trash.GameOver ();
 		}
 	}
 	public void ClickGlass(){
@@ -141,14 +152,13 @@ public class Generate : MonoBehaviour {
 			current = listaLixos [0];
 			Destroy(trashList[0]);
 			trashList.RemoveAt (0);
-			score += 1;
+			if (!Trash.dead){
+				score += 10;
+			}
 			Debug.Log (score);
 		} else {
-			GameOver ();
+			Trash.GameOver ();
 		}
 	}
-
-	public void GameOver(){
-		Application.LoadLevel(Application.loadedLevel);
-	}
+		
 }
