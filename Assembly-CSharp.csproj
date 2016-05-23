@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Generate.cs" />
      <Compile Include="Assets\Scripts\MenuGenerate.cs" />
      <Compile Include="Assets\Scripts\MenuThrash.cs" />
+     <Compile Include="Assets\Scripts\QuitApp.cs" />
      <Compile Include="Assets\Scripts\ScenesController.cs" />
      <Compile Include="Assets\Scripts\Splash.cs" />
      <Compile Include="Assets\Scripts\Trash.cs" />
